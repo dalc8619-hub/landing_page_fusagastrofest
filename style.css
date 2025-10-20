@@ -71,7 +71,7 @@ section {
     text-align: center;
     padding: 2rem;
     position: relative;
-    overflow: hidden; /* Evita que los elementos se salgan */
+    overflow-x: hidden; /* Evita que los elementos se salgan a los lados */
 }
 
 .hero-content {
@@ -81,7 +81,7 @@ section {
 .hero-logo {
     max-width: 450px;
     margin-bottom: 1.5rem;
-    /* Animación sutil de "flote" */
+    /* ¡AQUÍ ESTÁ LA ANIMACIÓN DEL LOGO QUE TE FALTABA! */
     animation: float 4s ease-in-out infinite;
 }
 
@@ -153,7 +153,14 @@ section {
 }
 
 .card:hover {
-    transform: translateY(-10px); /* Efecto de levitación al pasar el mouse */
+    transform: translateY(-12px); /* Aumentamos un poco la levitación */
+    /* ¡AQUÍ ESTÁ LA MAGIA! 
+      Usamos la variable --accent-color que cada tarjeta ya tiene 
+      para crear un "resplandor" (glow) del color correspondiente.
+    */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), /* Sombra para despegarla */
+                0 0 20px var(--accent-color),   /* El resplandor neón */
+                0 0 10px var(--accent-color);  /* Un brillo extra más suave */
 }
 
 .card h3 {
@@ -163,10 +170,7 @@ section {
 }
 
 
-/* ===============================================================
-  AQUÍ ESTÁN LOS ESTILOS ACTUALIZADOS PARA LA SECCIÓN DE IMPACTO
-  ===============================================================
-*/
+/* ===== 3.5 SECCIÓN DE IMPACTO (PATROCINADORES) ===== */
 .impact-section {
     background-color: #111122; /* Fondo oscuro para diferenciarla */
     text-align: center; /* Centramos todo el contenido */
@@ -209,10 +213,6 @@ section {
     background-color: #33d4ff;
     box-shadow: 0 8px 25px rgba(0, 196, 255, 0.6);
 }
-/* ===============================================================
-   FIN DE LOS ESTILOS ACTUALIZADOS
-   ===============================================================
-*/
 
 
 /* ===== 4. SECCIÓN CTA WHATSAPP ===== */
@@ -247,4 +247,102 @@ section {
     /* Estilo específico para el botón de WhatsApp */
     background-image: none; /* Quitamos el gradiente */
     background-color: var(--color-whatsapp);
-    box-shadow:
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    display: inline-flex; /* Para alinear el ícono y el texto */
+    align-items: center;
+    gap: 0.5rem; /* Espacio entre ícono y texto */
+    font-size: 1.1rem;
+}
+
+.whatsapp-button:hover {
+    background-color: #2fed71;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+}
+
+/* ===== 5. FOOTER (PIE DE PÁGINA) ===== */
+footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid #333;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    /* Estilos de íconos sociales (placeholder) */
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--color-blue);
+}
+
+/* ===== 6. ANIMACIONES (Keyframes y JS) ===== */
+
+/* ¡AQUÍ ESTÁ LA DEFINICIÓN DE LA ANIMACIÓN DE FLOTE! */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Clases para la animación de "fade-in" al hacer scroll (controlado por JS) */
+
+/* Estado inicial (oculto) */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Estado final (visible) */
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== 7. RESPONSIVE DESIGN (Para celulares) ===== */
+@media (max-width: 768px) {
+    
+    /* ¡AQUÍ ESTÁ LA CORRECCIÓN PARA CELULARES! */
+    .hero {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .hero h1 {
+        font-size: 2rem; /* Hacemos el título un poco más pequeño */
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .section-title,
+    .cta-content .gradient-text {
+        font-size: 2rem;
+    }
+
+    section {
+        padding: 4rem 1rem;
+    }
+
+    .hero-logo {
+        max-width: 300px;
+    }
+
+    .impact-subtitle {
+        font-size: 1.1rem;
+        margin-top: -2rem;
+        margin-bottom: 2rem;
+    }
+}
