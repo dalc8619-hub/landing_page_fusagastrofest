@@ -29,8 +29,7 @@ body {
 .navbar-logo {
     height: 40px; /* Logo más pequeño aquí */
     
-    /* ¡AQUÍ ESTÁ LA CORRECCIÓN QUE HICIMOS! */
-    /* Reutilizamos la misma animación 'float' del style.css */
+    /* ¡AQUÍ ESTÁ LA ANIMACIÓN DEL LOGO DE ESTA PÁGINA! */
     animation: float 4s ease-in-out infinite;
 }
 
